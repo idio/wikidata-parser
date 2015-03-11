@@ -4,6 +4,12 @@ import org.apache.spark.{SparkConf, SparkContext}
 
 import org.idio.wikidata.dump.element.{Property, Item, DumpElement}
 
+/*
+* Extracts Relationships from the Wikidata Dump.
+* It requieres:
+*   - Path to wikidata dump
+*   - A mapping stating which Topics(Qids to Extract relationships for)
+* */
 class Extractor(pathToDump: String)(implicit val sc: SparkContext){
 
   private val originalDump =  sc.textFile(pathToDump)
@@ -41,6 +47,10 @@ class Extractor(pathToDump: String)(implicit val sc: SparkContext){
     identifierLabelTuples.collect().toMap
   }
 
+  /*
+  * @param topicMapping: Path to tsv file where first field is a qId
+  * @param pathToOutputRelationships: Path where the resulting extracted relationships will be stored
+  * */
   def extractRelationships(topicMapping:Map[String, String], pathToOutputRelationships:String)={
 
     println("Creating property map..")
@@ -112,7 +122,7 @@ object Extractor{
 
     val conf = new SparkConf()
       .setMaster("local[4]")
-      .setAppName("Wiki2Vec corpus creator")
+      .setAppName("Wikidata Relationship Extractor")
       .set("spark.executor.memory", "3G")
 
     implicit val sc: SparkContext = new SparkContext(conf)
