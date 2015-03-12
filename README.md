@@ -50,6 +50,7 @@ It is an utility to  extract relationships out of the wikidata dump for a given 
 
 usage:
 1. get [Spark 1.2.0](http://d3kbcqa49mib13.cloudfront.net/spark-1.2.0-bin-hadoop2.4.tgz)
+
 2. do :
 ```
 SPARK_FOLDER/bin/spark-submit --class "org.idio.wikidata.dump.Extractor" target/scala-2.10/wikidata-assembly-1.0.jar /path/to/nodesmapping.tsv /path/to/wikidatadump /path/to/outputfile.tsv
