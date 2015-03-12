@@ -46,9 +46,10 @@ It is an utility to  extract relationships out of the wikidata dump for a given 
     - One triple per line : ( `startTopic`, `endTopic`, `relationshipType` )
     - `startTopic` and `endTopic` are referenced as lineIds within the given Qids map i.e: if the qid: `Q123` is in the line 10, then it will be referenced in the output as topic `10`
     - Relationships connecting topics which are not in the given list of Qids are ignored.
-    - Relationship types are output as: `relationship label_Pid`
+    - Relationship types are output as: `label_Pid`
 
-usage:
+### Usage:
+
 1. get [Spark 1.2.0](http://d3kbcqa49mib13.cloudfront.net/spark-1.2.0-bin-hadoop2.4.tgz)
 
 2. do :
