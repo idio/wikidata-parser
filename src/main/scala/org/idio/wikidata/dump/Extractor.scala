@@ -118,12 +118,12 @@ object Extractor{
     val pathToDump = args(1)
     val outputFolder = args(2)
     println("loading mapping...")
-    val nodeMapping = NodeMapping.load(pathToMapping)
+    val nodeMapping = NodeMapping.loadQidToLine(pathToMapping)
 
     val conf = new SparkConf()
       .setMaster("local[4]")
       .setAppName("Wikidata Relationship Extractor")
-      .set("spark.executor.memory", "3G")
+      .set("spark.executor.memory", "4G")
 
     implicit val sc: SparkContext = new SparkContext(conf)
 

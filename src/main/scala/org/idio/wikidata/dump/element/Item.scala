@@ -44,6 +44,14 @@ class Item(parsedJson: JValue) extends DumpElement {
     }
   }
 
+  def getWikipediaReference(language:String):Option[String] ={
+    val languageKey = language + "wiki"
+    Try((parsedJson \ "sitelinks" \ languageKey \ "title").asInstanceOf[JString].s) match{
+        case Success(s) => Some(s)
+        case _ => None
+    }
+  }
+
   /*
   * Returns a list of Tuples containing:
   *     (RelationshipTypePid, ArgumentQId)

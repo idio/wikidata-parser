@@ -18,6 +18,7 @@ class DumpElementsTest extends FlatSpec with ShouldMatchers{
     shigeruMiyamotoTopic.getId() should be (Some("Q12382"))
     shigeruMiyamotoTopic.getType() should be (Some("item"))
     shigeruMiyamotoTopic.getAliases("de") should be (Some("Miyamoto Shigeru"))
+    shigeruMiyamotoTopic.getWikipediaReference("en") should be (Some("Shigeru Miyamoto"))
 
 
     // Testing Claims
